@@ -2,22 +2,38 @@ import {Container, Logo, Formulario} from './styles.js'
 import { useState, useContext } from 'react';
 import { Link ,useNavigate } from "react-router-dom";
 import { UsuarioContext } from '../../contexts/UsuarioContext';
+import {URL_Cadastro} from '../../constants/urls.js'
+import axios from 'axios';
 
 function Cadastro(){
 
     const [clicado, setClicado] = useState(false);
-    const [cadastro, setCadastro] = useState({email: "", password: ""});
+    const [cadastro, setCadastro] = useState({nome:"", email: "", password: ""});
+    const [senhaConfirma, setSenhaConfirma] = useState("");
     const {setUsuario} = useContext(UsuarioContext);
     const navigate = useNavigate();
+
+    function cadastrar(event){
+        event.preventDefault();
+        if(senhaConfirma.senhaConfirma === cadastro.password){
+            setClicado(true);
+            const requisicao = axios.post(`${URL_Cadastro}`, cadastro);
+            requisicao.then(() => navigate("/")) ;
+            requisicao.catch((res) => {alert(res); setClicado(false);}) ;
+        }
+        else{
+            alert("A confirmação de senha não confere.\nVerifique se sua senha foi digitada corretamente.");
+        }
+    }
 
     return(
     <Container>
         <Logo>MyWallet</Logo>
-        <Formulario>
+        <Formulario onSubmit={cadastrar} clicado={clicado}>
         <input disabled={clicado} required type="text" placeholder="Nome" value={cadastro.name} onChange={e => setCadastro({...cadastro, name: e.target.value})}/>
         <input disabled={clicado} required type="email" placeholder="E-mail" value={cadastro.email} onChange={e => setCadastro({...cadastro, email: e.target.value} )}/>
-        <input disabled={clicado} required type="password" placeholder="Senha" value={cadastro.password} onChange={e => setCadastro({...cadastro, password: e.target.value} )}/>
-        <input disabled={clicado} required type="password" placeholder="Confirme a senha" value={cadastro.confirmPassword} onChange={e => setCadastro({...cadastro, confirmPassword: e.target.value} )}/>
+        <input disabled={clicado} required type="password" minLength={6} placeholder="Senha" value={cadastro.password} onChange={e => setCadastro({...cadastro, password: e.target.value} )}/>
+        <input disabled={clicado} required type="password" minLength={6} placeholder="Confirme a senha" onChange={e => setSenhaConfirma({senhaConfirma: e.target.value})}/>
         <button disabled={clicado} type="submit">
             Cadastrar
         </button>
