@@ -58,9 +58,6 @@ const Formulario = styled.form`
         justify-content: center;
         align-items: center;
     }
-    div{
-
-    }
 `;
 
 export {Container, Logo, Formulario};
