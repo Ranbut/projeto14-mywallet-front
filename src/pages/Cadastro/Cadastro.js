@@ -1,8 +1,8 @@
 import {Container, Logo, Formulario} from './styles.js'
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { Link ,useNavigate } from "react-router-dom";
-import { UsuarioContext } from '../../contexts/UsuarioContext';
 import {URL_Cadastro} from '../../constants/urls.js'
+import { ThreeDots } from  'react-loader-spinner';
 import axios from 'axios';
 
 function Cadastro(){
@@ -10,7 +10,6 @@ function Cadastro(){
     const [clicado, setClicado] = useState(false);
     const [cadastro, setCadastro] = useState({nome:"", email: "", password: ""});
     const [senhaConfirma, setSenhaConfirma] = useState("");
-    const {setUsuario} = useContext(UsuarioContext);
     const navigate = useNavigate();
 
     function cadastrar(event){
@@ -35,7 +34,15 @@ function Cadastro(){
         <input disabled={clicado} required type="password" minLength={6} placeholder="Senha" value={cadastro.password} onChange={e => setCadastro({...cadastro, password: e.target.value} )}/>
         <input disabled={clicado} required type="password" minLength={6} placeholder="Confirme a senha" onChange={e => setSenhaConfirma({senhaConfirma: e.target.value})}/>
         <button disabled={clicado} type="submit">
-            Cadastrar
+        {clicado ? <ThreeDots
+                        height="13" 
+                        width="51" 
+                        radius="9"
+                        color="#ffffff" 
+                        ariaLabel="three-dots-loading"
+                        wrapperStyle={{}}
+                        wrapperClassName=""
+                        visible={clicado} /> : 'Cadastrar'}
         </button>
         </Formulario>
         <Link to="/">Já tem uma conta? Entre agora!</Link>
