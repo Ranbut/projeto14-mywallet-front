@@ -44,6 +44,7 @@ const Formulario = styled.form`
         color: #000000;
     }
     button{
+        margin-top: 13px;
         width: 326px;
         height: 46px;
         background-color: #A328D6;
