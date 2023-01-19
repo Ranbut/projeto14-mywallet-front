@@ -8,7 +8,7 @@ import axios from 'axios';
 function NovaEntrada(){
 
     const [clicado, setClicado] = useState(false);
-    const [entrada, setEntrada] = useState({value: "", description: ""});
+    const [entrada, setEntrada] = useState({value: "", description: "", type: "entrada"});
     const navigate = useNavigate();
 
     function registrar(event){

@@ -22,7 +22,7 @@ function Login(){
         setClicado(true);
         const requisicao = axios.post(`${URL_Login}`, login);
         requisicao.then((res) => {setUsuario(res.data); navigate("/home"); }) ;
-        requisicao.catch((res) => {alert(res.response.data.message); setClicado(false);});
+        requisicao.catch((res) => {alert(res.data); setClicado(false);});
     }
 
     return(

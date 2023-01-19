@@ -10,7 +10,7 @@ import NovaSaida from './NovaSaida/NovaSaida.js';
 
 function App() {
 
-  const [usuario, setUsuario] = useState({ name: "" ,email: "", password: "" });
+  const [usuario, setUsuario] = useState({ name: "" ,email: "", password: "", type: "saida"});
 
   return (
     <BrowserRouter>
