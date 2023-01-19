@@ -48,6 +48,7 @@ const BotaoConfirmar = styled.button`
     font-size: 20px;
     line-height: 23.48px;
     color: #FFFFFF;
+    align-items: center;
 `;
 
 export {TipoEntrada, FormularioRegistro, BotaoConfirmar};

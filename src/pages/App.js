@@ -31,8 +31,16 @@ function App() {
             <Home />
           </UsuarioContext.Provider>
           } />
-        <Route path="/nova-entrada" element={<NovaEntrada />} />
-        <Route path="/nova-saida" element={<NovaSaida />} />
+        <Route path="/nova-entrada" element={
+          <UsuarioContext.Provider value={{ usuario }}>
+            <NovaEntrada />
+          </UsuarioContext.Provider>
+        } />
+        <Route path="/nova-saida" element={
+          <UsuarioContext.Provider value={{ usuario }}>
+            <NovaSaida />
+          </UsuarioContext.Provider>
+        } />
         <Route path="/editar-entrada"/>
         <Route path="/editar-saida"/>
       </Routes>

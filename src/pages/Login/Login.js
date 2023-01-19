@@ -14,7 +14,7 @@ function Login(){
     const navigate = useNavigate();
 
     useEffect(() => { 
-        setUsuario({name: "", email: "", password: ""});
+        setUsuario({name: "", email: "", password: "", token: ""});
     }, [setUsuario]);
 
     function entrar(event){
