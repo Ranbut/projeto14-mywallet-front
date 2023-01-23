@@ -21,8 +21,8 @@ function Cadastro(){
         if (!passwordMatch) return window.alert('Senha e confirmação devem ser iguais');
     
         setClicado(true);
-        const body = delete cadastro.passwordConfirmation;
-        const CadastroRes = await cadastroAPI(body);
+        delete cadastro.passwordConfirmation;
+        const CadastroRes = await cadastroAPI(cadastro);
     
         setClicado(false);
         if (!CadastroRes.success) return window.alert(CadastroRes.error);
