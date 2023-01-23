@@ -27,7 +27,7 @@ function App() {
           </UsuarioContext.Provider>
           } />
         <Route path="/home" element={
-          <UsuarioContext.Provider value={{ usuario }}>
+          <UsuarioContext.Provider value={{ usuario, setUsuario }}>
             <Home />
           </UsuarioContext.Provider>
           } />

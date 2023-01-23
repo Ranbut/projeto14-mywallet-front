@@ -23,41 +23,16 @@ const TopoContainer = styled.div`
     }
 `;
 
-const RegistrosContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 326px;
-    height: 446px;
-    background: #FFFFFF;
-    border-radius: 5px;
-    margin: auto;
-
-    p{
-        width: 180px;
-        height: 46px;
-        padding: 80% 0;
-        font-family: 'Raleway';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 23.48px;
-        text-align: center;
-        color: #868686;
-    }
-`;
-
 const BotoesContainer = styled.div`
     display: flex;
     flex-direction: row;
     margin-top: 13px;
+    margin-left: 15px;
     justify-content: center;
-    margin-right: 15px;
-
+    
     div{
         width: 155px;
         height: 114px;
-        margin-left: 15px;
         background: #A328D6;
         border-radius: 5px;
         border: none;
@@ -90,4 +65,4 @@ const BotoesContainer = styled.div`
 `;
 
 
-export {TopoContainer, RegistrosContainer, BotoesContainer};
+export {TopoContainer, BotoesContainer};

@@ -2,9 +2,8 @@ import {Container, Logo, Formulario} from './styles.js'
 import { useState, useContext, useEffect } from 'react';
 import { Link ,useNavigate } from "react-router-dom";
 import { UsuarioContext } from '../../contexts/UsuarioContext';
-import {URL_Login} from '../../constants/urls.js'
 import { ThreeDots } from  'react-loader-spinner';
-import axios from 'axios';
+import { loginAPI } from '../../api/loginAPI.js';
 
 function Login(){
 
@@ -17,12 +16,20 @@ function Login(){
         setUsuario({name: "", email: "", password: "", token: ""});
     }, [setUsuario]);
 
-    function entrar(event){
+   async function entrar(event){
         event.preventDefault();
+
         setClicado(true);
-        const requisicao = axios.post(`${URL_Login}`, login);
-        requisicao.then((res) => {setUsuario(res.data); navigate("/home"); }) ;
-        requisicao.catch((res) => {alert(res.data); setClicado(false);});
+        const loginRes = await loginAPI(login);
+        setClicado(false);
+
+        if (!loginRes.success) {
+          window.alert(loginRes.error);
+          return;
+        }
+    
+        setUsuario(loginRes.userInfo);
+        navigate('/home');
     }
 
     return(
